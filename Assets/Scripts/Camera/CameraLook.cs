@@ -12,7 +12,7 @@ public class CameraLook : MonoBehaviour
 
     void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked; 
+        Cursor.lockState = CursorLockMode.Locked; 
     }
 
     
@@ -22,7 +22,7 @@ public class CameraLook : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * MouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * MouseSensitivity * Time.deltaTime;
 
-        xRotation += mouseY;
+        xRotation -= mouseY;
 
         xRotation = Mathf.Clamp(xRotation,-90f,90f);
 
