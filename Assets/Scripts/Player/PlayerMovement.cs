@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,12 +8,12 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController characterController;
 
-    public float Speed = 10f;
+    public float speed = 12f;
 
-    public float gravity = 9.81f;
+    private float gravity = -9.81f;
 
+    public Transform groundCheck;
 
-    public Transform GroundCheck;
     public float sphereRadius = 0.3f;
     public LayerMask groundMask;
 
@@ -20,17 +21,16 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
 
-    public float JumpHeight = 3;
+    public float jumpHeight = 3;
 
     void Update()
     {
 
 
-        isGrounded = Physics.CheckSphere(GroundCheck.position,sphereRadius,groundMask);
+        isGrounded = Physics.CheckSphere(groundCheck.position,sphereRadius,groundMask);
 
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
+        if (isGrounded && velocity.y < 0) {
+             velocity.y = -2f;
         }
 
         float x = Input.GetAxis("Horizontal");
@@ -38,20 +38,17 @@ public class PlayerMovement : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
-
-
-        if (Input.GetKey("space") && isGrounded )
+        
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(JumpHeight * -2 * gravity);
-        }
+           velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+        }    
+        
+        characterController.Move(move * speed * Time.deltaTime);
 
+        velocity.y += gravity*Time.deltaTime;
 
-
-
-
-        characterController.Move(move * Speed * Time.deltaTime);
-
-        velocity.y -= gravity * Time.deltaTime;
+        
 
         characterController.Move(velocity * Time.deltaTime);
 

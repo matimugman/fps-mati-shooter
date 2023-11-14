@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1099,7 +1099,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 943180909}
   - {fileID: 1026955785}
   - {fileID: 1750698429}
   - {fileID: 538556289}
@@ -1451,11 +1450,11 @@ Transform:
   m_GameObject: {fileID: 943180908}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.16076696, y: 1.6375301, z: 5.1164618}
   m_LocalScale: {x: 3.9143112, y: 1, z: 3.3286228}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 652110988}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &943180910
 MeshCollider:
@@ -1844,7 +1843,7 @@ Transform:
   m_GameObject: {fileID: 1047098905}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.61, z: 0}
+  m_LocalPosition: {x: 0, y: 7.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1865,14 +1864,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 1047098911}
-  Speed: 8
-  gravity: 9.81
-  GroundCheck: {fileID: 1794111171}
+  speed: 12
+  groundCheck: {fileID: 1794111171}
   sphereRadius: 0.3
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  JumpHeight: 3
+  jumpHeight: 3
 --- !u!143 &1047098911
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2464,5 +2462,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 705507995}
+  - {fileID: 943180909}
   - {fileID: 652110988}
   - {fileID: 1047098909}
